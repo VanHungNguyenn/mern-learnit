@@ -1,0 +1,47 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "jim",
+    "password": "jim"
+}
+
+###############################
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "vanhung",
+    "password": "vanhung"
+}
+
+###############################
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTg0MDhmNjU5YWFkYTdmZmUzYWQ1YzciLCJpYXQiOjE2MzYwNDI5OTl9.PVw3Eu964Rf6Zr4_gnodMMKX-D17oFRWXG3EVOyq3Ck
+
+{
+    "title": "React",
+    "description": "React",
+    "url": "react.com"
+}
+
+###############################
+GET http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTgzYmE4YzZkMTBmMDI3MGMyZDRiMzciLCJpYXQiOjE2MzYwNDM0NDl9.0Ue-Z1E2eXE1uoNyb7Db91oEatZ5O55FFEiyEvI_MJE
+
+###############################
+PUT http://localhost:3000/api/posts/6183fefe6e3c563d08c7b78d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTgzYmE4YzZkMTBmMDI3MGMyZDRiMzciLCJpYXQiOjE2MzYwNDM0NDl9.0Ue-Z1E2eXE1uoNyb7Db91oEatZ5O55FFEiyEvI_MJE
+
+{
+    "title": "update Vue",
+    "description":"VUEEE",
+    "url": "vue.org",
+    "status": "LEARNING"
+}
+
+###############################
+DELETE http://localhost:3000/api/posts/6183fefe6e3c563d08c7b78d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTgzYmE4YzZkMTBmMDI3MGMyZDRiMzciLCJpYXQiOjE2MzYwNDM0NDl9.0Ue-Z1E2eXE1uoNyb7Db91oEatZ5O55FFEiyEvI_MJE
