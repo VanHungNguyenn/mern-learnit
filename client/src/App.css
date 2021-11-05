@@ -45,6 +45,22 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
+.navbar-brand {
+  cursor: pointer;
+}
+
+.logo {
+  margin: 0 .6rem;
+}
+
+.icon-logout {
+  margin-right: .4rem;
+}
+
+#basic-navbar-nav {
+  margin: 0 .6rem;
+}
+
 /* Post button */
 
 .post-button {
