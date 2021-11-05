@@ -3,8 +3,30 @@ const argon2 = require('argon2')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
+const verifyToken = require('../middlewave/auth')
 
 const User = require('../models/User')
+
+// @route GET api/auth
+// @desc Check if user is looged in
+// @access Public
+router.get('/', verifyToken, async (req, res) => {
+	try {
+		const user = await User.findById(req.userId).select('-password')
+		if (!user) {
+			return res
+				.status(400)
+				.json({ success: false, message: 'User not found' })
+		}
+		res.json({ success: true, user })
+	} catch (error) {
+		console.log(Error)
+		res.status(500).json({
+			success: false,
+			message: 'Internal server error',
+		})
+	}
+})
 
 // @route POST api/auth/register
 // @desc Register user

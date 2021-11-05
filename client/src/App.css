@@ -20,11 +20,20 @@
 }
 
 .landing-inner form {
-  width: 30%;
+  width: 90%;
+  max-width: 600px;
+}
+
+.landing-inner form>div {
+  margin: 1rem 0;
 }
 
 .landing-inner h1, .landing-inner h4, .landing-inner p {
   color: white;
+}
+
+.landing-inner p>a {
+  margin-left: .5rem;
 }
 
 .spinner-container {
