@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Logo from '../../assets/vanhung.svg'
 import logoutIcon from '../../assets/logout.svg'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthContext'
 
 const Navbarmenu = () => {
+	const {
+		authState: {
+			user: { username },
+		},
+		logoutUser,
+	} = useContext(AuthContext)
+
+	const logout = () => logoutUser()
+
 	return (
-		<Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
+		<Navbar expand='lg' variant='dark' className='shadow navbarMenu'>
 			<Navbar.Brand
 				to='/dashboard'
 				as={Link}
@@ -45,15 +55,13 @@ const Navbarmenu = () => {
 					</Nav.Link>
 				</Nav>
 				<Nav className='d-flex align-items-center'>
-					<Nav.Link
-						className='font-weight-bolder text-white'
-						disabled
-					>
-						Welcome VanHung
+					<Nav.Link className='text-white welcome-text' disabled>
+						Welcome <span>{username}</span>
 					</Nav.Link>
 					<Button
 						variant='secondary'
 						className='font-weight-bolder text-white btn-logout'
+						onClick={logout}
 					>
 						<img
 							src={logoutIcon}
