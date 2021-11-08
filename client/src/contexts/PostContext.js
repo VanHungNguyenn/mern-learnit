@@ -8,6 +8,7 @@ import {
 	ADD_POST,
 	DELETE_POST,
 	UPDATE_POST,
+	FIND_POST,
 } from './constants'
 import axios from 'axios'
 
@@ -16,11 +17,14 @@ export const PostContext = createContext()
 const PostContextProvider = ({ children }) => {
 	// state
 	const [postState, dispath] = useReducer(postReducer, {
+		post: null,
 		posts: [],
 		postsLoading: true,
 	})
 
 	const [showAddPostModal, setShowAddPostModal] = useState(false)
+	const [showUpdatePostModal, setShowUpdatePostModal] = useState(false)
+
 	const [showToast, setShowToast] = useState({
 		show: false,
 		message: '',
@@ -69,6 +73,12 @@ const PostContextProvider = ({ children }) => {
 		}
 	}
 
+	// find post when user click update post
+	const findPost = (postId) => {
+		const post = postState.posts.find((post) => post._id === postId)
+		dispath({ type: FIND_POST, payload: post })
+	}
+
 	// update post
 	const updatePost = async (updatePost) => {
 		try {
@@ -97,6 +107,9 @@ const PostContextProvider = ({ children }) => {
 		setShowToast,
 		deletePost,
 		updatePost,
+		findPost,
+		showUpdatePostModal,
+		setShowUpdatePostModal,
 	}
 
 	return (

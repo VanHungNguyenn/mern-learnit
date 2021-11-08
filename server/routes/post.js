@@ -72,7 +72,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 		let updatePost = {
 			title,
 			description: description || '',
-			url: url.startsWith('https://') ? url : `http://${url}` || '',
+			url: url.startsWith('http://') ? url : `http://${url}`,
 			status: status || 'TO LEARN',
 		}
 

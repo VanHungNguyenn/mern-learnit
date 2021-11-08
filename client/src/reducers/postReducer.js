@@ -4,6 +4,7 @@ import {
 	ADD_POST,
 	DELETE_POST,
 	UPDATE_POST,
+	FIND_POST,
 } from '../contexts/constants'
 
 export const postReducer = (state, action) => {
@@ -34,6 +35,8 @@ export const postReducer = (state, action) => {
 					}
 				}),
 			}
+		case FIND_POST:
+			return { ...state, post: payload }
 		default:
 			return state
 	}

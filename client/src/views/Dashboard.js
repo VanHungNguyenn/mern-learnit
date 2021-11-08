@@ -11,6 +11,7 @@ import Toast from 'react-bootstrap/Toast'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import SinglePost from '../components/posts/SinglePost'
 import AddPostModal from '../components/posts/AddPostModal'
+import UpdatePostModal from '../components/posts/UpdatePostModal'
 import addIcon from '../assets/plus-circle-fill.svg'
 
 const Dashboard = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
 	} = useContext(AuthContext)
 
 	const {
-		postState: { posts, postsLoading },
+		postState: { post, posts, postsLoading },
 		getPosts,
 		setShowAddPostModal,
 		showToast: { show, message, type },
@@ -100,6 +101,7 @@ const Dashboard = () => {
 		<>
 			{body}
 			<AddPostModal />
+			{post !== null && <UpdatePostModal />}
 			{/* After post is added, show toast */}
 			<Toast
 				show={show}
