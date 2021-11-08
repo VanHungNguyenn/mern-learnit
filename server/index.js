@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3001
 var bodyParser = require('body-parser')
 require('dotenv').config()
 const mongoose = require('mongoose')
@@ -27,6 +26,8 @@ app.use(express.json())
 app.use(cors())
 app.use('/api/auth', authRouter)
 app.use('/api/posts', postRouter)
+
+const port = process.env.POST || 3001
 
 app.listen(port, () => {
 	console.log(`App listening at http://localhost:${port}`)
